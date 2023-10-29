@@ -13,8 +13,8 @@ const BaseLayout = () => {
 
   return (
     <>
-      <h1>Hola pelau</h1>
-      <StepsLayout/>
+      <h1>State Machine</h1>
+      <StepsLayout state={state} send={send}/>
     </>
   );
 };

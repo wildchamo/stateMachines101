@@ -4,7 +4,6 @@ import BaseLayout from "./containers/BaseLayout";
 function App() {
   return (
     <>
-      <h1>Hola Jose</h1>
       <BaseLayout />
     </>
   );

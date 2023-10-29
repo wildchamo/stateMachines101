@@ -1,10 +1,13 @@
+import Initial from "../components/Inital";
 
-
-
-export const StepsLayout = () => {
+export const StepsLayout = ({ state, send }) => {
   const renderContent = () => {
-    return <h1 className="bg-amber-500 text-red">Steps Layout</h1>;
+    if (state.matches("initial")) return <Initial send={send} />;
+    if (state.matches("search"))
+      return <h1 className="bg-amber-500 text-red">{state.value}</h1>;
+
+    return null;
   };
 
-  return <div >{renderContent()}</div>;
+  return <div>{renderContent()}</div>;
 };
