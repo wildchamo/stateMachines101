@@ -10,9 +10,9 @@ const Search = ({send}) => {
 
     return (
         <div>
-            Buscando
-            <button onClick={avanzar}>Avanzar!</button>
+            Buscando <br />
             <button onClick={regresar}>Regresar</button>
+            <button onClick={avanzar}>Avanzar!</button>
         </div>
     );
 };
