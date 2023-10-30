@@ -1,34 +1,46 @@
 import { createMachine } from "xstate";
 
-const bookingMachine = createMachine({
-  id: "Buy plane tickets",
-  initial: "initial",
-  states: {
-    initial: {
-      on: {
-        START: "search",
-        
+//Cómo hago una wildchard
+
+const bookingMachine = createMachine(
+  {
+    id: "Buy plane tickets",
+    initial: "initial",
+    states: {
+      initial: {
+        on: {
+          START: {
+            target: "search",
+            actions: "imprimirInicio",
+          },
+        },
       },
-    },
-    search: {
-      on: {
-        CONTINUE: "passengers",
-        RETURN: "initial",
-        CANCEL: "initial",
+      search: {
+        on: {
+          CONTINUE: "passengers",
+          RETURN: "initial",
+          CANCEL: "initial",
+        },
       },
-    },
-    passengers: {
-      on: {
-        DONE: "ticket",
+      passengers: {
+        on: {
+          DONE: "ticket",
+        },
       },
-    },
-    ticket: {
-      on: {
-        FINISH: "initial",
+      ticket: {
+        on: {
+          FINISH: "initial",
+        },
       },
     },
   },
-});
-
+  {
+    actions: {
+      imprimirInicio: () => {
+        console.log("Listoo, mero inicio");
+      },
+    },
+  } 
+);
 
 export default bookingMachine;

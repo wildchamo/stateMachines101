@@ -10,7 +10,6 @@ export const StepsLayout = ({ state, send }) => {
     if (state.matches("search")) return Search({ send });
     if (state.matches("passengers")) return Passengers({ send });
     if (state.matches("ticket")) return Ticket({ send });
-
     return null;
   };
 
