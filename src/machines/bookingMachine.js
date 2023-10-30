@@ -16,6 +16,8 @@ const bookingMachine = createMachine(
         },
       },
       search: {
+        entry: "entrando",
+        exit: "saliendo",
         on: {
           CONTINUE: "passengers",
           RETURN: "initial",
@@ -39,8 +41,14 @@ const bookingMachine = createMachine(
       imprimirInicio: () => {
         console.log("Listoo, mero inicio");
       },
+      entrando: () => {
+        console.log("entrando Papito");
+      },
+      saliendo: () => {
+        console.log("saliendo Papito");
+      },
     },
-  } 
+  }
 );
 
 export default bookingMachine;
