@@ -8,7 +8,7 @@ export const StepsLayout = ({ state, send }) => {
   const renderContent = () => {
     if (state.matches("initial")) return <Initial send={send} />;
     if (state.matches("search")) return Search({ send });
-    if (state.matches("passengers")) return Passengers({ send });
+    if (state.matches("passengers")) return Passengers({ send, state });
     if (state.matches("ticket")) return Ticket({ send });
     return null;
   };

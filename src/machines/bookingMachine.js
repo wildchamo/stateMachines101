@@ -7,11 +7,15 @@ const bookingMachine = createMachine(
     id: "Buy plane tickets",
     initial: "initial",
     context: {
-      passengers: {},
+      passengers: [],
       selectedCountry: "",
     },
     states: {
       initial: {
+        entry: assign((context, event) => {
+          context.passengers = [];
+          context.selectedCountry = "";
+        }),
         on: {
           START: {
             target: "search",
@@ -26,16 +30,29 @@ const bookingMachine = createMachine(
           CONTINUE: {
             target: "passengers",
             actions: assign({
+              // no es una especie de función, sino, más bien, una asignación de valores
               selectedCountry: (context, event) => event.selectedCountry,
             }),
           },
           RETURN: "initial",
-          CANCEL: "initial",
+          CANCEL: {
+            target: "initial",
+            actions: assign({
+              selectedCountry: (context, event) => "",
+            }),
+          },
         },
       },
       passengers: {
         on: {
           DONE: "ticket",
+          CANCEL: "initial",
+          ADD: {
+            target: "passengers",
+            actions: assign((context, event) =>
+              context.passengers.push(event.newPassenger)
+            ),
+          },
         },
       },
       ticket: {

@@ -23,6 +23,7 @@ const Search = ({ send }) => {
       <select name="" id="" onChange={handleSelect}>
         <option value="Colombia">Colombia</option>
         <option value="Buenos Aires">Buenos Aires</option>
+        <option value="Venezuela">Venezuela</option>
       </select>
       <button onClick={regresar}>Regresar</button>
       <button onClick={avanzar}>Avanzar!</button>
