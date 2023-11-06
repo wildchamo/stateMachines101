@@ -12,10 +12,7 @@ const bookingMachine = createMachine(
     },
     states: {
       initial: {
-        entry: assign((context, event) => {
-          context.passengers = [];
-          context.selectedCountry = "";
-        }),
+        entry: "cleanContext",
         on: {
           START: {
             target: "search",
@@ -73,6 +70,10 @@ const bookingMachine = createMachine(
       saliendo: () => {
         console.log("saliendo Papito");
       },
+      cleanContext: assign({
+        selectedCountry: "",
+        passengers: [],
+      }),
     },
   }
 );
