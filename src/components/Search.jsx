@@ -1,24 +1,33 @@
+import { useState } from "react";
 
+const Search = ({ send }) => {
+  const [selectedCountry, setSelectedCountry] = useState("");
 
-const Search = ({send}) => {
-    const avanzar = () => {
-        send('CONTINUE');
-    };
-        const regresar = () => {
-        send('RETURN');
-    };
+  const avanzar = () => {
+    send("CONTINUE", {
+      selectedCountry: selectedCountry,
+    });
+  };
+  const regresar = () => {
+    send("RETURN");
+  };
 
-    return (
-        <div>
-            Buscando <br />
-            <select name="" id="">
-                <option value="Colombia">Colombia</option>
-                <option value="Buenos Aires">Buenos Aires</option>
-            </select>
-            <button onClick={regresar}>Regresar</button>
-            <button onClick={avanzar}>Avanzar!</button>
-        </div>
-    );
+  const handleSelect = (e) => {
+    console.log(e.target.value);
+    setSelectedCountry(e.target.value);
+  };
+
+  return (
+    <div>
+      Buscando <br />
+      <select name="" id="" onChange={handleSelect}>
+        <option value="Colombia">Colombia</option>
+        <option value="Buenos Aires">Buenos Aires</option>
+      </select>
+      <button onClick={regresar}>Regresar</button>
+      <button onClick={avanzar}>Avanzar!</button>
+    </div>
+  );
 };
 
 export default Search;

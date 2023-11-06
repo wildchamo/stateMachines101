@@ -6,7 +6,7 @@ import { Nav } from "./Nav.jsx";
 const BaseLayout = () => {
   const [state, send] = useMachine(bookingMachine);
 
-  console.log(state);
+  console.log(state.value, state.context);
 
   // console.log("matches " + state.matches("initial"));
   // console.log("matches " + state.matches("tickets"));

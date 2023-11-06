@@ -1,4 +1,4 @@
-import { createMachine } from "xstate";
+import { assign, createMachine } from "xstate";
 
 //Cómo hago una wildchard
 
@@ -6,6 +6,10 @@ const bookingMachine = createMachine(
   {
     id: "Buy plane tickets",
     initial: "initial",
+    context: {
+      passengers: {},
+      selectedCountry: "",
+    },
     states: {
       initial: {
         on: {
@@ -19,7 +23,12 @@ const bookingMachine = createMachine(
         entry: "entrando",
         exit: "saliendo",
         on: {
-          CONTINUE: "passengers",
+          CONTINUE: {
+            target: "passengers",
+            actions: assign({
+              selectedCountry: (context, event) => event.selectedCountry,
+            }),
+          },
           RETURN: "initial",
           CANCEL: "initial",
         },
