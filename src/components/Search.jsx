@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-const Search = ({ send }) => {
+const Search = ({ send, state }) => {
+  const { countries } = state.context;
   const [selectedCountry, setSelectedCountry] = useState("");
 
   const avanzar = () => {
@@ -21,9 +22,9 @@ const Search = ({ send }) => {
     <div>
       Buscando <br />
       <select name="" id="" onChange={handleSelect}>
-        <option value="Colombia">Colombia</option>
-        <option value="Buenos Aires">Buenos Aires</option>
-        <option value="Venezuela">Venezuela</option>
+        {countries.map((country) => (
+          <option key={country.name.common} value={country.name.common}>{country.name.common}</option>
+        ))}
       </select>
       <button onClick={regresar}>Regresar</button>
       <button onClick={avanzar}>Avanzar!</button>
