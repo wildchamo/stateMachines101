@@ -2,7 +2,8 @@ import { useState } from "react";
 
 const Search = ({ send, state }) => {
   const { countries } = state.context;
-  const [selectedCountry, setSelectedCountry] = useState("");
+
+  const [selectedCountry, setSelectedCountry] = useState("Colombia");
 
   const avanzar = () => {
     send("CONTINUE", {
@@ -14,7 +15,6 @@ const Search = ({ send, state }) => {
   };
 
   const handleSelect = (e) => {
-    console.log(e.target.value);
     setSelectedCountry(e.target.value);
   };
 
@@ -23,7 +23,9 @@ const Search = ({ send, state }) => {
       Buscando <br />
       <select name="" id="" onChange={handleSelect}>
         {countries.map((country) => (
-          <option key={country.name.common} value={country.name.common}>{country.name.common}</option>
+          <option key={country.name.common} value={country.name.common}>
+            {country.name.common}
+          </option>
         ))}
       </select>
       <button onClick={regresar}>Regresar</button>

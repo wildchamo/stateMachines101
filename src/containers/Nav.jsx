@@ -6,7 +6,7 @@ export const Nav = ({ state, send }) => {
     <nav>
       <h1>Book a Fly! 🛩️</h1>
 
-      {!state.matches("initial") && (
+      {!state.matches("initial") && !state.matches("ticket") && (
         <button onClick={cancelarVuelo}>Cancelar</button>
       )}
     </nav>
